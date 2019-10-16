@@ -14,13 +14,13 @@ resource "aws_iam_role" "ecs_instance" {
 
 resource "aws_iam_policy_attachment" "ecs_service_policy" {
   name       = "${var.project_name}-${terraform.workspace}-ecs_service}"
-  roles      = "${aws_iam_role.ecs_service.name}"
+  roles      = ["${aws_iam_role.ecs_service.name}"]
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceRole"
 }
 
 resource "aws_iam_policy_attachment" "ecs_instance_policy" {
   name       = "${var.project_name}-${terraform.workspace}-ecs_instance"
-  roles      = "${aws_iam_role.ecs_instance.name}"
+  roles      = ["${aws_iam_role.ecs_instance.name}"]
   policy_arn = "arn:aws:iam::policy/service-role/AmazonEC2ContainerServiceforEC2Role"
 }
 
