@@ -1,5 +1,5 @@
 resource "aws_launch_configuration" "ecs_launch" {
-  name                 = "${var.project_name}-${terraform.workspace}-ecs_launch_group"
+  name                 = "${var.project_name}-${terraform.workspace}-ecs-launch-group"
   image_id             = "${var.ecs_ami}"
   instance_type        = "${var.ecs_instance_type}"
   iam_instance_profile = "${aws_iam_instance_profile.ecs_instance.id}"
